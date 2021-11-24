@@ -1,5 +1,5 @@
 {
   "name": "stac",
   "version": "0.0.1",
-  "main": "index.html"
+  "main": "script/index.js"
 }
