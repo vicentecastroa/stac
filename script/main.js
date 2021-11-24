@@ -165,52 +165,7 @@ function stopPropagationAndPreventDefault(e) {
 }
 
 //Prepares the page for interaction with the user.
-function preparePageForInteraction() {
-	var collection =document.getElementsByClassName('dropEnabled');
-	/*** Investigative Region to check the overlay on the whole page***/
-	$(window).bind('dragover', dragover);
-	$(window).bind('drop', drop);
-	$('.overlay').bind('dragleave', dragleave);
-	var tid;
 
-	function dragover(event) {
-		clearTimeout(tid);
-		event.stopPropagation();
-		event.preventDefault();
-		$('.overlay').show();
-		return false;
-	}
-
-	function dragleave(event) {
-		tid = setTimeout(function(){
-		event.stopPropagation();
-		event.preventDefault();
-		$('.overlay').hide();
-		}, 300);
-		return false;
-		
-	}
-
-	function drop(event) {
-		event.stopPropagation();
-		event.preventDefault();
-		drawGraph(event);
-		$('.overlay').hide();
-		return false;
-	}
-	/***Investigative Region ends***/
-	
-	for (var i = 0; i < collection.length; i++) {
-		//Prevents all the default drag and drop events from executing.
-		addEventHandler(collection[i], 'dragstart', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'dragenter', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'dragleave', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'dragover', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'dragenter', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'dragend', stopPropagationAndPreventDefault);
-		addEventHandler(collection[i], 'drop', stopPropagationAndPreventDefault);
-	}
-}
 	
 function addEventHandler(obj, evt, handler) {
     if(obj.addEventListener) {
@@ -265,4 +220,4 @@ function preProcessNetworkUI() {
 }
 //Functions to be called at the time of loading - facilitates the handling of the events.
 //Ability to support multiple formatting of the inputs - to be added.
-preparePageForInteraction();
+// preparePageForInteraction();
